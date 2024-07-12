@@ -18,6 +18,10 @@ public protocol Endpoints {
 }
 
 extension Endpoints {
+    var parameter: [URLQueryItem] { [] }
+    
+    var headers: [String: String] { [:] }
+    
     func getURL() -> URL? {
         var component = URLComponents()
         component.scheme = "https"

@@ -9,20 +9,16 @@ import Foundation
 import Combine
 
 public protocol Requestable {
-    var requestTimeOut: Float { get }
-    
     func request<T: Codable>(_ request: RequestModel) -> AnyPublisher<T, NetworkError>
 }
 
 public struct RequestModel {
     let endpoints: Endpoints
     let body: Data?
-    let requestTimeOut: Float?
     
-    public init(endpoints: Endpoints, requestBody: Encodable? = nil, requestTimeOut: Float? = nil) {
+    public init(endpoints: Endpoints, requestBody: Encodable? = nil) {
         self.endpoints = endpoints
         self.body = requestBody?.encodedToData()
-        self.requestTimeOut = requestTimeOut
     }
     
     func getURLRequest() -> URLRequest? {

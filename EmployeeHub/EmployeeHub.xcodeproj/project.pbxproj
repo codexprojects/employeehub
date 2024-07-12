@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		41A952D32C4133F40050E8CD /* EmployeeHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952D22C4133F40050E8CD /* EmployeeHubApp.swift */; };
-		41A952D52C4133F40050E8CD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952D42C4133F40050E8CD /* ContentView.swift */; };
 		41A952D72C4133F50050E8CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41A952D62C4133F50050E8CD /* Assets.xcassets */; };
 		41A952DA2C4133F50050E8CD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41A952D92C4133F50050E8CD /* Preview Assets.xcassets */; };
 		41A952E22C41371D0050E8CD /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952E12C41371D0050E8CD /* Endpoint.swift */; };
@@ -16,12 +15,17 @@
 		41A952E62C4137700050E8CD /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952E52C4137700050E8CD /* NetworkError.swift */; };
 		41A952E82C4137870050E8CD /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952E72C4137870050E8CD /* Requestable.swift */; };
 		41A952EA2C4137BA0050E8CD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952E92C4137BA0050E8CD /* NetworkManager.swift */; };
+		41A952EF2C415C1F0050E8CD /* EmployeeServiceEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952EE2C415C1F0050E8CD /* EmployeeServiceEndpoints.swift */; };
+		41A952F12C415D170050E8CD /* EmployeeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952F02C415D170050E8CD /* EmployeeService.swift */; };
+		41A952F42C415D410050E8CD /* EmployeeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952F32C415D410050E8CD /* EmployeeResponse.swift */; };
+		41A952F62C415DB50050E8CD /* EmployeeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952F52C415DB50050E8CD /* EmployeeListViewModel.swift */; };
+		41A952F82C415E7F0050E8CD /* EmployeeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952F72C415E7F0050E8CD /* EmployeeListView.swift */; };
+		41A952FB2C4164FD0050E8CD /* EmployeeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952FA2C4164FD0050E8CD /* EmployeeDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		41A952CF2C4133F40050E8CD /* EmployeeHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmployeeHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A952D22C4133F40050E8CD /* EmployeeHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeHubApp.swift; sourceTree = "<group>"; };
-		41A952D42C4133F40050E8CD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		41A952D62C4133F50050E8CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41A952D92C4133F50050E8CD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		41A952E12C41371D0050E8CD /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -29,6 +33,12 @@
 		41A952E52C4137700050E8CD /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		41A952E72C4137870050E8CD /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		41A952E92C4137BA0050E8CD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		41A952EE2C415C1F0050E8CD /* EmployeeServiceEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeServiceEndpoints.swift; sourceTree = "<group>"; };
+		41A952F02C415D170050E8CD /* EmployeeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeService.swift; sourceTree = "<group>"; };
+		41A952F32C415D410050E8CD /* EmployeeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeResponse.swift; sourceTree = "<group>"; };
+		41A952F52C415DB50050E8CD /* EmployeeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeListViewModel.swift; sourceTree = "<group>"; };
+		41A952F72C415E7F0050E8CD /* EmployeeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeListView.swift; sourceTree = "<group>"; };
+		41A952FA2C4164FD0050E8CD /* EmployeeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,9 +71,11 @@
 		41A952D12C4133F40050E8CD /* EmployeeHub */ = {
 			isa = PBXGroup;
 			children = (
-				41A952E02C4136C90050E8CD /* API */,
 				41A952D22C4133F40050E8CD /* EmployeeHubApp.swift */,
-				41A952D42C4133F40050E8CD /* ContentView.swift */,
+				41A952E02C4136C90050E8CD /* API */,
+				41A952F22C415D300050E8CD /* Models */,
+				41A952EB2C4138C40050E8CD /* Modules */,
+				41A952FC2C4166700050E8CD /* Helpers */,
 				41A952D62C4133F50050E8CD /* Assets.xcassets */,
 				41A952D82C4133F50050E8CD /* Preview Content */,
 			);
@@ -88,6 +100,57 @@
 				41A952E92C4137BA0050E8CD /* NetworkManager.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		41A952EB2C4138C40050E8CD /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				41A952EC2C4138D20050E8CD /* Employees */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		41A952EC2C4138D20050E8CD /* Employees */ = {
+			isa = PBXGroup;
+			children = (
+				41A952ED2C4138DF0050E8CD /* EmployeeList */,
+				41A952F92C4164ED0050E8CD /* EmployeeDetail */,
+				41A952EE2C415C1F0050E8CD /* EmployeeServiceEndpoints.swift */,
+				41A952F02C415D170050E8CD /* EmployeeService.swift */,
+			);
+			path = Employees;
+			sourceTree = "<group>";
+		};
+		41A952ED2C4138DF0050E8CD /* EmployeeList */ = {
+			isa = PBXGroup;
+			children = (
+				41A952F52C415DB50050E8CD /* EmployeeListViewModel.swift */,
+				41A952F72C415E7F0050E8CD /* EmployeeListView.swift */,
+			);
+			path = EmployeeList;
+			sourceTree = "<group>";
+		};
+		41A952F22C415D300050E8CD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				41A952F32C415D410050E8CD /* EmployeeResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		41A952F92C4164ED0050E8CD /* EmployeeDetail */ = {
+			isa = PBXGroup;
+			children = (
+				41A952FA2C4164FD0050E8CD /* EmployeeDetailView.swift */,
+			);
+			path = EmployeeDetail;
+			sourceTree = "<group>";
+		};
+		41A952FC2C4166700050E8CD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,10 +224,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				41A952E82C4137870050E8CD /* Requestable.swift in Sources */,
+				41A952F12C415D170050E8CD /* EmployeeService.swift in Sources */,
 				41A952E42C4137530050E8CD /* HTTPMethod.swift in Sources */,
-				41A952D52C4133F40050E8CD /* ContentView.swift in Sources */,
+				41A952EF2C415C1F0050E8CD /* EmployeeServiceEndpoints.swift in Sources */,
 				41A952EA2C4137BA0050E8CD /* NetworkManager.swift in Sources */,
+				41A952F42C415D410050E8CD /* EmployeeResponse.swift in Sources */,
 				41A952E22C41371D0050E8CD /* Endpoint.swift in Sources */,
+				41A952F82C415E7F0050E8CD /* EmployeeListView.swift in Sources */,
+				41A952F62C415DB50050E8CD /* EmployeeListViewModel.swift in Sources */,
+				41A952FB2C4164FD0050E8CD /* EmployeeDetailView.swift in Sources */,
 				41A952D32C4133F40050E8CD /* EmployeeHubApp.swift in Sources */,
 				41A952E62C4137700050E8CD /* NetworkError.swift in Sources */,
 			);
@@ -225,7 +293,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -282,7 +350,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -307,6 +375,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -314,6 +383,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ilke.employeehub.EmployeeHub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -335,6 +408,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -342,6 +416,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ilke.employeehub.EmployeeHub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

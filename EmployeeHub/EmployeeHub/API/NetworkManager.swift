@@ -9,12 +9,7 @@ import Foundation
 import Combine
 
 public class NetworkManager: Requestable {
-    public var requestTimeOut: Float = 30
-    
     public func request<T>(_ request: RequestModel) -> AnyPublisher<T, NetworkError> where T : Codable {
-        let sessionConfig = URLSessionConfiguration.default
-        sessionConfig.timeoutIntervalForRequest = TimeInterval(request.requestTimeOut ?? requestTimeOut)
-        
         return URLSession.shared
             .dataTaskPublisher(for: request.getURLRequest()!)
             .tryMap { output in
@@ -28,5 +23,5 @@ public class NetworkManager: Requestable {
                 NetworkError.invalidJSON(String(describing: error))
             }
             .eraseToAnyPublisher()
-        }
+    }
 }
