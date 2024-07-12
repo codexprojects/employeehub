@@ -11,6 +11,11 @@
 		41A952D52C4133F40050E8CD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952D42C4133F40050E8CD /* ContentView.swift */; };
 		41A952D72C4133F50050E8CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41A952D62C4133F50050E8CD /* Assets.xcassets */; };
 		41A952DA2C4133F50050E8CD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41A952D92C4133F50050E8CD /* Preview Assets.xcassets */; };
+		41A952E22C41371D0050E8CD /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952E12C41371D0050E8CD /* Endpoint.swift */; };
+		41A952E42C4137530050E8CD /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952E32C4137530050E8CD /* HTTPMethod.swift */; };
+		41A952E62C4137700050E8CD /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952E52C4137700050E8CD /* NetworkError.swift */; };
+		41A952E82C4137870050E8CD /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952E72C4137870050E8CD /* Requestable.swift */; };
+		41A952EA2C4137BA0050E8CD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952E92C4137BA0050E8CD /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		41A952D42C4133F40050E8CD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		41A952D62C4133F50050E8CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41A952D92C4133F50050E8CD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		41A952E12C41371D0050E8CD /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		41A952E32C4137530050E8CD /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		41A952E52C4137700050E8CD /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		41A952E72C4137870050E8CD /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
+		41A952E92C4137BA0050E8CD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +61,7 @@
 		41A952D12C4133F40050E8CD /* EmployeeHub */ = {
 			isa = PBXGroup;
 			children = (
+				41A952E02C4136C90050E8CD /* API */,
 				41A952D22C4133F40050E8CD /* EmployeeHubApp.swift */,
 				41A952D42C4133F40050E8CD /* ContentView.swift */,
 				41A952D62C4133F50050E8CD /* Assets.xcassets */,
@@ -65,6 +76,18 @@
 				41A952D92C4133F50050E8CD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		41A952E02C4136C90050E8CD /* API */ = {
+			isa = PBXGroup;
+			children = (
+				41A952E12C41371D0050E8CD /* Endpoint.swift */,
+				41A952E32C4137530050E8CD /* HTTPMethod.swift */,
+				41A952E52C4137700050E8CD /* NetworkError.swift */,
+				41A952E72C4137870050E8CD /* Requestable.swift */,
+				41A952E92C4137BA0050E8CD /* NetworkManager.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +160,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41A952E82C4137870050E8CD /* Requestable.swift in Sources */,
+				41A952E42C4137530050E8CD /* HTTPMethod.swift in Sources */,
 				41A952D52C4133F40050E8CD /* ContentView.swift in Sources */,
+				41A952EA2C4137BA0050E8CD /* NetworkManager.swift in Sources */,
+				41A952E22C41371D0050E8CD /* Endpoint.swift in Sources */,
 				41A952D32C4133F40050E8CD /* EmployeeHubApp.swift in Sources */,
+				41A952E62C4137700050E8CD /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
