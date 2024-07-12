@@ -2,7 +2,7 @@
 
 ## Overview
 
-The EmployeeHub is an iOS application that displays a list of employees fetched from remote servers. The app includes features such as pull-to-refresh, search functionality, and detailed views of each employee. The app is implemented using both SwiftUI and UIKit.
+The EmployeeHub is an iOS application that displays a list of employees fetched from remote servers. The app includes features such as pull-to-refresh, search functionality, and detailed views of each employee. The app is implemented using SwiftUI.
 
 ## Requirements to Compile and Run
 
@@ -40,5 +40,9 @@ The data is fetched using the `NetworkManager` class, which makes parallel netwo
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/employees-app.git
-   cd employees-app
+   git clone https://github.com/codexprojects/employeedirectory.git
+   cd EmployeeHub
+2. Open the project in Xcode:
+   ```bash
+   open EmployeeHub.xcodeproj
+3. Build and run the app on the iOS Simulator.
