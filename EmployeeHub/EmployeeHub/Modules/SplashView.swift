@@ -1,0 +1,45 @@
+//
+//  SplashView.swift
+//  EmployeeHub
+//
+//  Created by Ilke Yucel on 12.07.2024.
+//
+
+import SwiftUI
+
+struct SplashView: View {
+    
+    @State var isActive: Bool = false
+    
+    var body: some View {
+        ZStack {
+            if self.isActive {
+                let networkManager = NetworkManager()
+                let employeeService = EmployeeService(networkRequest: networkManager)
+                let employeeViewModel = EmployeeListViewModel(employeeService: employeeService)
+                EmployeeListView(viewModel: employeeViewModel)
+            } else {
+                Rectangle()
+                    .background(Color.black)
+                Image("Mooncascade")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 220, height: 64)
+            }
+        }
+        .onAppear {
+            Task {
+                try await Task.sleep(nanoseconds: 2_000_000_000)
+                await MainActor.run {
+                    withAnimation {
+                        self.isActive = true
+                    }
+                }
+            }
+        }
+    }
+}
+
+#Preview {
+    SplashView()
+}

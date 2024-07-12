@@ -18,11 +18,11 @@ struct Employee: Codable, Identifiable, Hashable {
     let position: String
     let contactDetails: ContactDetails
     var projects: [String]?
-
+    
     enum CodingKeys: String, CodingKey {
         case fname, lname, position, contactDetails = "contact_details", projects
     }
-
+    
     mutating func merge(with other: Employee) {
         if let otherProjects = other.projects {
             self.projects = (self.projects ?? []) + otherProjects

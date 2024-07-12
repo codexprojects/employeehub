@@ -22,7 +22,7 @@ struct EmployeeDetailView: View {
                 .padding()
             Text(employee.position)
         }
-       
+        
     }
 }
 

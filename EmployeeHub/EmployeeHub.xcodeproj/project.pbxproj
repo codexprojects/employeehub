@@ -22,6 +22,7 @@
 		41A952F82C415E7F0050E8CD /* EmployeeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952F72C415E7F0050E8CD /* EmployeeListView.swift */; };
 		41A952FB2C4164FD0050E8CD /* EmployeeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952FA2C4164FD0050E8CD /* EmployeeDetailView.swift */; };
 		41A953002C416E7B0050E8CD /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952FF2C416E7B0050E8CD /* SearchBar.swift */; };
+		41A953022C41A4C30050E8CD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A953012C41A4C30050E8CD /* SplashView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		41A952F72C415E7F0050E8CD /* EmployeeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeListView.swift; sourceTree = "<group>"; };
 		41A952FA2C4164FD0050E8CD /* EmployeeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDetailView.swift; sourceTree = "<group>"; };
 		41A952FF2C416E7B0050E8CD /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		41A953012C41A4C30050E8CD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +79,6 @@
 				41A952E02C4136C90050E8CD /* API */,
 				41A952F22C415D300050E8CD /* Models */,
 				41A952EB2C4138C40050E8CD /* Modules */,
-				41A952FC2C4166700050E8CD /* Helpers */,
 				41A952D62C4133F50050E8CD /* Assets.xcassets */,
 				41A952D82C4133F50050E8CD /* Preview Content */,
 			);
@@ -108,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				41A952EC2C4138D20050E8CD /* Employees */,
+				41A953012C41A4C30050E8CD /* SplashView.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -147,13 +149,6 @@
 				41A952FA2C4164FD0050E8CD /* EmployeeDetailView.swift */,
 			);
 			path = EmployeeDetail;
-			sourceTree = "<group>";
-		};
-		41A952FC2C4166700050E8CD /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +234,7 @@
 				41A952FB2C4164FD0050E8CD /* EmployeeDetailView.swift in Sources */,
 				41A952D32C4133F40050E8CD /* EmployeeHubApp.swift in Sources */,
 				41A952E62C4137700050E8CD /* NetworkError.swift in Sources */,
+				41A953022C41A4C30050E8CD /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,13 +18,13 @@ class EmployeeService {
     func fetchList() -> AnyPublisher<[Employee], NetworkError> {
         let tallinnEndpoint = EmployeeServiceEndpoints.tallinnEmployeeList
         let tartuEndpoint = EmployeeServiceEndpoints.tartuEmployeeList
-
+        
         let tallinnRequest = RequestModel(endpoints: tallinnEndpoint)
         let tartuRequest = RequestModel(endpoints: tartuEndpoint)
-
+        
         let tallinnPublisher = networkRequest.request(tallinnRequest).map { (response: EmployeeResponse) in response.employees }.eraseToAnyPublisher()
         let tartuPublisher = networkRequest.request(tartuRequest).map { (response: EmployeeResponse) in response.employees }.eraseToAnyPublisher()
-
+        
         return Publishers.Merge(tallinnPublisher, tartuPublisher)
             .collect()
             .map { responses in
