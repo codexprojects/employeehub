@@ -11,7 +11,18 @@ struct EmployeeDetailView: View {
     let employee: Employee
     
     var body: some View {
-        Text(employee.fname)
+        VStack {
+            if let projects = employee.projects {
+                Text(projects.joined(separator: ", "))
+                    .font(.title)
+                    .padding()
+            }
+            Text(employee.fname + employee.lname)
+                .font(.title)
+                .padding()
+            Text(employee.position)
+        }
+       
     }
 }
 

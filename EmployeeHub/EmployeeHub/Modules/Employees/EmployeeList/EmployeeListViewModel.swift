@@ -10,16 +10,20 @@ import Combine
 
 class EmployeeListViewModel: ObservableObject {
     @Published var groupedEmployees: [String: [Employee]] = [:]
+    @Published var filteredEmployees: [Employee] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     @Published var showErrorAlert: Bool = false
+    @Published var searchText: String = ""
     
     private var cancellables = Set<AnyCancellable>()
     private let employeeService: EmployeeService
+    private var allEmployees: [Employee] = []
     
     init(employeeService: EmployeeService) {
         self.employeeService = employeeService
-        fetchEmployees() // Ensure data is fetched when the view model is initialized
+        fetchEmployees()
+        setupSearch()
     }
     
     func fetchEmployees() {
@@ -31,32 +35,47 @@ class EmployeeListViewModel: ObservableObject {
                 if case let .failure(error) = completion {
                     self?.errorMessage = error.localizedDescription
                     self?.showErrorAlert = true
-                    print("Error: \(error.localizedDescription)") // Debugging print
                 }
             }, receiveValue: { [weak self] employees in
-                print("Fetched employees: \(employees)") // Debugging print
-                self?.groupAndSort(employees: employees)
+                print("Fetched employees: \(employees)")
+                self?.allEmployees = employees
+                self?.groupedEmployees = self?.groupAndSort(employees: employees) ?? [:]
             })
             .store(in: &cancellables)
     }
     
-    private func groupAndSort(employees: [Employee]) {
-        // First, sort the employees by last name, then by first name
+    private func setupSearch() {
+        $searchText
+            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
+            .removeDuplicates()
+            .sink { [weak self] searchText in
+                self?.filterEmployees(with: searchText)
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func filterEmployees(with searchText: String) {
+        guard !searchText.isEmpty else {
+            groupedEmployees = groupAndSort(employees: allEmployees)
+            return
+        }
+        
+        let filtered = allEmployees.filter { employee in
+            employee.fname.lowercased().contains(searchText.lowercased()) ||
+            employee.lname.lowercased().contains(searchText.lowercased()) ||
+            employee.position.lowercased().contains(searchText.lowercased()) ||
+            employee.projects?.contains(where: { $0.lowercased().contains(searchText.lowercased()) }) ?? false
+        }
+        groupedEmployees = groupAndSort(employees: filtered)
+    }
+    
+    private func groupAndSort(employees: [Employee]) -> [String: [Employee]] {
         let sortedEmployees = employees.sorted { ($0.lname, $0.fname) < ($1.lname, $1.fname) }
-        
-        // Next, group the sorted employees by their position
         let grouped = Dictionary(grouping: sortedEmployees) { $0.position }
-        
-        // Print the grouped result for debugging
-        print("Grouped employees: \(grouped)") // Debugging print
-        
-        // Then, sort each group's employees again (to ensure order within groups)
         let sortedGrouped = grouped.mapValues { group in
             group.sorted { ($0.lname, $0.fname) < ($1.lname, $1.fname) }
         }
-        
-        // Finally, sort the groups by their keys (positions) and convert to a [String: [Employee]] dictionary
-        groupedEmployees = Dictionary(uniqueKeysWithValues: sortedGrouped.sorted { $0.key < $1.key })
+        return Dictionary(uniqueKeysWithValues: sortedGrouped.sorted { $0.key < $1.key })
     }
     
     func refresh() {

@@ -21,6 +21,7 @@
 		41A952F62C415DB50050E8CD /* EmployeeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952F52C415DB50050E8CD /* EmployeeListViewModel.swift */; };
 		41A952F82C415E7F0050E8CD /* EmployeeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952F72C415E7F0050E8CD /* EmployeeListView.swift */; };
 		41A952FB2C4164FD0050E8CD /* EmployeeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952FA2C4164FD0050E8CD /* EmployeeDetailView.swift */; };
+		41A953002C416E7B0050E8CD /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952FF2C416E7B0050E8CD /* SearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		41A952F52C415DB50050E8CD /* EmployeeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeListViewModel.swift; sourceTree = "<group>"; };
 		41A952F72C415E7F0050E8CD /* EmployeeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeListView.swift; sourceTree = "<group>"; };
 		41A952FA2C4164FD0050E8CD /* EmployeeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDetailView.swift; sourceTree = "<group>"; };
+		41A952FF2C416E7B0050E8CD /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			children = (
 				41A952F52C415DB50050E8CD /* EmployeeListViewModel.swift */,
 				41A952F72C415E7F0050E8CD /* EmployeeListView.swift */,
+				41A952FF2C416E7B0050E8CD /* SearchBar.swift */,
 			);
 			path = EmployeeList;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41A953002C416E7B0050E8CD /* SearchBar.swift in Sources */,
 				41A952E82C4137870050E8CD /* Requestable.swift in Sources */,
 				41A952F12C415D170050E8CD /* EmployeeService.swift in Sources */,
 				41A952E42C4137530050E8CD /* HTTPMethod.swift in Sources */,
