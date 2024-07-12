@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Employees App is an iOS application designed to display a list of employees fetched from remote servers. The app includes features such as pull-to-refresh, search functionality, and detailed views of each employee. The app is implemented using both SwiftUI and UIKit.
+The EmployeeHub is an iOS application that displays a list of employees fetched from remote servers. The app includes features such as pull-to-refresh, search functionality, and detailed views of each employee. The app is implemented using both SwiftUI and UIKit.
 
 ## Requirements to Compile and Run
 
