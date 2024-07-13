@@ -6,22 +6,25 @@
 //
 
 import Foundation
-import Combine
 
 public class NetworkManager: Requestable {
-    public func request<T>(_ request: RequestModel) -> AnyPublisher<T, NetworkError> where T : Codable {
-        return URLSession.shared
-            .dataTaskPublisher(for: request.getURLRequest()!)
-            .tryMap { output in
-                guard output.response is HTTPURLResponse else {
-                    throw NetworkError.serverError(code: 0, error: "Server error")
-                }
-                return output.data
-            }
-            .decode(type: T.self, decoder: JSONDecoder())
-            .mapError { error in
-                NetworkError.invalidJSON(String(describing: error))
-            }
-            .eraseToAnyPublisher()
+    public func request<T>(_ request: RequestModel) async throws -> T where T: Codable {
+        guard let urlRequest = request.getURLRequest() else {
+            throw NetworkError.badURL("Invalid URL")
+        }
+        
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        
+        guard let httpResponse = response as? HTTPURLResponse,
+              (200...299).contains(httpResponse.statusCode) else {
+            throw NetworkError.serverError(code: (response as? HTTPURLResponse)?.statusCode ?? 0, error: "HTTP error")
+        }
+        
+        do {
+            let decodedResponse = try JSONDecoder().decode(T.self, from: data)
+            return decodedResponse
+        } catch {
+            throw NetworkError.invalidJSON(String(describing: error))
+        }
     }
 }

@@ -12,6 +12,7 @@ struct EmployeeHubApp: App {
     var body: some Scene {
         WindowGroup {
             SplashView()
+                .tint(Color(hex: "#161632"))
         }
     }
 }

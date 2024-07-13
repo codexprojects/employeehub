@@ -9,14 +9,14 @@ import Foundation
 import Combine
 
 public protocol Requestable {
-    func request<T: Codable>(_ request: RequestModel) -> AnyPublisher<T, NetworkError>
+    func request<T: Codable>(_ request: RequestModel) async throws -> T
 }
 
 public struct RequestModel {
-    let endpoints: Endpoints
+    let endpoints: Endpoint
     let body: Data?
     
-    public init(endpoints: Endpoints, requestBody: Encodable? = nil) {
+    public init(endpoints: Endpoint, requestBody: Encodable? = nil) {
         self.endpoints = endpoints
         self.body = requestBody?.encodedToData()
     }

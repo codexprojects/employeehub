@@ -5,8 +5,8 @@
 //  Created by Ilke Yucel on 12.07.2024.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 class EmployeeService {
     private var networkRequest: Requestable
@@ -15,37 +15,29 @@ class EmployeeService {
         self.networkRequest = networkRequest
     }
     
-    func fetchList() -> AnyPublisher<[Employee], NetworkError> {
+    // Updated to use async/await instead of Combine
+    func fetchList() async throws -> [Employee] {
         let tallinnEndpoint = EmployeeServiceEndpoints.tallinnEmployeeList
         let tartuEndpoint = EmployeeServiceEndpoints.tartuEmployeeList
         
-        let tallinnRequest = RequestModel(endpoints: tallinnEndpoint)
-        let tartuRequest = RequestModel(endpoints: tartuEndpoint)
+        // Perform both requests concurrently and wait for both to complete
+        async let tallinnEmployees: [Employee] = fetchEmployees(endpoint: tallinnEndpoint)
+        async let tartuEmployees: [Employee] = fetchEmployees(endpoint: tartuEndpoint)
         
-        let tallinnPublisher = networkRequest.request(tallinnRequest).map { (response: EmployeeResponse) in response.employees }.eraseToAnyPublisher()
-        let tartuPublisher = networkRequest.request(tartuRequest).map { (response: EmployeeResponse) in response.employees }.eraseToAnyPublisher()
-        
-        return Publishers.Merge(tallinnPublisher, tartuPublisher)
-            .collect()
-            .map { responses in
-                self.unifyEmployees(responses.flatMap { $0 })
-            }
-            .eraseToAnyPublisher()
+        // Combine the results from both endpoints
+        return try await tallinnEmployees + tartuEmployees
     }
     
-    private func unifyEmployees(_ employees: [Employee]) -> [Employee] {
-        var uniqueEmployees: [String: Employee] = [:]
-        
-        for employee in employees {
-            let key = "\(employee.fname) \(employee.lname)"
-            if var existingEmployee = uniqueEmployees[key] {
-                existingEmployee.merge(with: employee)
-                uniqueEmployees[key] = existingEmployee
-            } else {
-                uniqueEmployees[key] = employee
-            }
+    // Updated to use async/await
+    private func fetchEmployees(endpoint: Endpoint) async throws -> [Employee] {
+        let request = RequestModel(endpoints: endpoint)
+        do {
+            let response: EmployeeResponse = try await networkRequest.request(request)
+            return response.employees
+        } catch {
+            // Rethrow the error to be handled by the caller
+            throw error
         }
-        
-        return Array(uniqueEmployees.values)
     }
 }
+

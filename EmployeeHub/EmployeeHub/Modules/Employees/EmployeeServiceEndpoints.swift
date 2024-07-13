@@ -7,26 +7,26 @@
 
 import Foundation
 
-enum EmployeeServiceEndpoints: Endpoints {
+enum EmployeeServiceEndpoints: Endpoint {
     case tallinnEmployeeList
     case tartuEmployeeList
     
     var baseURL: String {
         switch self {
-        case .tallinnEmployeeList: "tallinn-jobapp.aw.ee"
-        case .tartuEmployeeList: "tartu-jobapp.aw.ee"
+            case .tallinnEmployeeList: "tallinn-jobapp.aw.ee"
+            case .tartuEmployeeList: "tartu-jobapp.aw.ee"
         }
     }
     
     var path: String {
         switch self {
-        case .tallinnEmployeeList, .tartuEmployeeList: "/employee_list"
+            case .tallinnEmployeeList, .tartuEmployeeList: "/employee_list"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .tartuEmployeeList, .tallinnEmployeeList: .get
+            case .tartuEmployeeList, .tallinnEmployeeList: .get
         }
     }
 }

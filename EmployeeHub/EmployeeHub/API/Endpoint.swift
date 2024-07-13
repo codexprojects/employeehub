@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol Endpoints {
+public protocol Endpoint {
     var baseURL: String { get }
     var path: String { get }
     var parameter: [URLQueryItem] { get }
@@ -17,7 +17,7 @@ public protocol Endpoints {
     func getURL() -> URL?
 }
 
-extension Endpoints {
+extension Endpoint {
     var parameter: [URLQueryItem] { [] }
     
     var headers: [String: String] { [:] }

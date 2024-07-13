@@ -13,14 +13,16 @@ struct SplashView: View {
     
     var body: some View {
         ZStack {
+            Color(hex: "#161623")
+                .ignoresSafeArea(.all)
+            
             if self.isActive {
                 let networkManager = NetworkManager()
                 let employeeService = EmployeeService(networkRequest: networkManager)
                 let employeeViewModel = EmployeeListViewModel(employeeService: employeeService)
                 EmployeeListView(viewModel: employeeViewModel)
+                    .tint(Color(hex: "#161632"))
             } else {
-                Rectangle()
-                    .background(Color.black)
                 Image("Mooncascade")
                     .resizable()
                     .scaledToFit()

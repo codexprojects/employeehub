@@ -10,38 +10,60 @@ import Combine
 
 class EmployeeListViewModel: ObservableObject {
     @Published var groupedEmployees: [String: [Employee]] = [:]
-    @Published var filteredEmployees: [Employee] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     @Published var showErrorAlert: Bool = false
     @Published var searchText: String = ""
     
+    private var allEmployees: [Employee] = []
     private var cancellables = Set<AnyCancellable>()
     private let employeeService: EmployeeService
-    private var allEmployees: [Employee] = []
     
     init(employeeService: EmployeeService) {
         self.employeeService = employeeService
-        fetchEmployees()
+        Task {
+            await fetchEmployees()
+        }
         setupSearch()
     }
     
-    func fetchEmployees() {
+    @MainActor
+    func fetchEmployees() async {
         isLoading = true
-        employeeService.fetchList()
-            .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { [weak self] completion in
-                self?.isLoading = false
-                if case let .failure(error) = completion {
-                    self?.errorMessage = error.localizedDescription
-                    self?.showErrorAlert = true
-                }
-            }, receiveValue: { [weak self] employees in
-                print("Fetched employees: \(employees)")
-                self?.allEmployees = employees
-                self?.groupedEmployees = self?.groupAndSort(employees: employees) ?? [:]
-            })
-            .store(in: &cancellables)
+        do {
+            let employees = try await employeeService.fetchList()
+            let unifiedEmployees = unifyAndMergeEmployees(employees)
+            allEmployees = unifiedEmployees // Update allEmployees with the fetched and processed employees
+            groupAndSortEmployees(unifiedEmployees)
+        } catch {
+            errorMessage = error.localizedDescription
+            showErrorAlert = true
+        }
+        isLoading = false
+    }
+    
+    private func unifyAndMergeEmployees(_ employees: [Employee]) -> [Employee] {
+        var uniqueEmployees: [String: Employee] = [:]
+        
+        for employee in employees {
+            let key = "\(employee.fname.lowercased())-\(employee.lname.lowercased())"
+            if var existingEmployee = uniqueEmployees[key] {
+                existingEmployee.mergeProjects(from: employee)
+                uniqueEmployees[key] = existingEmployee
+            } else {
+                uniqueEmployees[key] = employee
+            }
+        }
+        
+        return Array(uniqueEmployees.values)
+    }
+    
+    @MainActor
+    private func groupAndSortEmployees(_ employees: [Employee]) {
+        let grouped = Dictionary(grouping: employees, by: { $0.position })
+        groupedEmployees = grouped.mapValues { group in
+            group.sorted { $0.lname < $1.lname }
+        }
     }
     
     private func setupSearch() {
@@ -49,36 +71,39 @@ class EmployeeListViewModel: ObservableObject {
             .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
             .removeDuplicates()
             .sink { [weak self] searchText in
-                self?.filterEmployees(with: searchText)
+                let processedText = searchText.lowercased()
+                Task {
+                    [weak self] in
+                    guard let strongSelf = self else { return }
+                    await strongSelf.filterEmployees(with: processedText)
+                }
             }
             .store(in: &cancellables)
     }
     
-    private func filterEmployees(with searchText: String) {
-        guard !searchText.isEmpty else {
-            groupedEmployees = groupAndSort(employees: allEmployees)
-            return
+    @MainActor
+    private func filterEmployees(with searchText: String) async {
+        if searchText.isEmpty {
+            groupAndSortEmployees(allEmployees)
+        } else {
+            let filtered = allEmployees.filter {
+                $0.fname.lowercased().contains(searchText) ||
+                $0.lname.lowercased().contains(searchText) ||
+                $0.position.lowercased().contains(searchText) ||
+                $0.projects?.contains(where: { $0.lowercased().contains(searchText) }) ?? false
+            }
+            groupAndSortEmployees(filtered)
         }
-        
-        let filtered = allEmployees.filter { employee in
-            employee.fname.lowercased().contains(searchText.lowercased()) ||
-            employee.lname.lowercased().contains(searchText.lowercased()) ||
-            employee.position.lowercased().contains(searchText.lowercased()) ||
-            employee.projects?.contains(where: { $0.lowercased().contains(searchText.lowercased()) }) ?? false
-        }
-        groupedEmployees = groupAndSort(employees: filtered)
     }
     
-    private func groupAndSort(employees: [Employee]) -> [String: [Employee]] {
-        let sortedEmployees = employees.sorted { ($0.lname, $0.fname) < ($1.lname, $1.fname) }
-        let grouped = Dictionary(grouping: sortedEmployees) { $0.position }
-        let sortedGrouped = grouped.mapValues { group in
-            group.sorted { ($0.lname, $0.fname) < ($1.lname, $1.fname) }
-        }
-        return Dictionary(uniqueKeysWithValues: sortedGrouped.sorted { $0.key < $1.key })
+    func refresh() async {
+        await fetchEmployees()
     }
-    
-    func refresh() {
-        fetchEmployees()
+}
+
+extension Employee {
+    mutating func mergeProjects(from other: Employee) {
+        let combinedProjects = (self.projects ?? []) + (other.projects ?? [])
+        self.projects = Array(Set(combinedProjects))
     }
 }
