@@ -2,39 +2,40 @@
 
 ## Overview
 
-The EmployeeHub is an iOS application that displays a list of employees fetched from remote servers. The app includes features such as pull-to-refresh, search functionality, and detailed views of each employee. It is implemented using SwiftUI.
+EmployeeHub is an iOS application designed to manage and display a list of employees fetched from remote servers. It offers functionality such as searching, viewing detailed information on each employee, and the ability to refresh the employee list dynamically. The app is built using SwiftUI and adheres to modern iOS development practices.
 
 ## Requirements to Compile and Run
 
-- Xcode 14 or later
-- Swift 5.7 or later
-- iOS 16 or later
-- Internet connection (to fetch employee data from remote servers)
+- **Xcode 14** or later: The project uses Swift 5.7 features that are supported in Xcode 14 and above.
+- **Swift 5.7** or later: Ensure that the Swift version is up to date in your development environment.
+- **iOS 16** or later: This version supports the latest SwiftUI features used in the app.
+- **Active Internet connection**: Necessary to fetch employee data from the remote servers during runtime.
 
 ## Features
 
-- Displays a list of employees grouped by their positions, sorted alphabetically.
-- Allows users to view detailed information about each employee.
-- Supports pull-to-refresh to reload the employee list.
-- Includes a search bar to filter employees by first name, last name, position, and projects.
-- Implements error handling for network failures.
+- **Employee Listing**: Displays employees grouped by their positions in alphabetical order. Each group's employees are also sorted alphabetically by last name.
+- **Detailed Employee View**: Offers a detailed view for each employee, including personal and contact information, and a list of projects.
+- **Search Functionality**: Allows filtering the employee list based on names, positions, or projects.
+- **Dynamic Data Refresh**: Supports pull-to-refresh to reload data from the remote servers.
+- **Robust Error Handling**: Manages network failures and alerts the user to any issues with data fetching.
 
 ## Architecture
 
-The app follows the MVVM (Model-View-ViewModel) architecture pattern. This architecture was chosen for its clear separation of concerns, making the code more modular, testable, and maintainable. 
+EmployeeHub uses the **Model-View-ViewModel (MVVM)** architecture pattern, which enhances the separation of concerns by dividing the application into three interconnected components:
 
-- **Model:** Represents the employee data and is responsible for decoding the JSON response from the server.
-- **View:** Comprises SwiftUI views to display the UI.
-- **ViewModel:** Manages the data and business logic, providing data to the views and handling user interactions.
+- **Model**: Handles the raw data (employees), parsing JSON from the network responses.
+- **View**: Responsible for presenting user interface elements and receiving user interactions.
+- **ViewModel**: Acts as a liaison that manages the communication between the Model and the View by handling business logic and updating the UI state.
+
+This architecture was chosen to facilitate easier maintenance and testing of the application, promoting a clean organizational structure.
 
 ## Data Fetching
 
-Employee data is fetched from two remote endpoints simultaneously:
+The application fetches employee data simultaneously from two distinct endpoints:
+- **Tallinn Employee List**: [https://tallinn-jobapp.aw.ee/employee_list](https://tallinn-jobapp.aw.ee/employee_list)
+- **Tartu Employee List**: [https://tartu-jobapp.aw.ee/employee_list](https://tartu-jobapp.aw.ee/employee_list)
 
-- [Tallinn Employee List](https://tallinn-jobapp.aw.ee/employee_list)
-- [Tartu Employee List](https://tartu-jobapp.aw.ee/employee_list)
-
-The data is fetched using the `NetworkManager` class, which makes parallel network requests to both endpoints and combines the results.
+Using the `NetworkManager`, the app makes concurrent requests to these endpoints and aggregates the responses. This approach ensures efficient data retrieval and processing.
 
 ## Installation
 
