@@ -1,8 +1,8 @@
-# # EmployeeHub - iOS Test Assignment
+# EmployeeHub - iOS Test Assignment
 
 ## Overview
 
-The EmployeeHub is an iOS application that displays a list of employees fetched from remote servers. The app includes features such as pull-to-refresh, search functionality, and detailed views of each employee. The app is implemented using SwiftUI.
+The EmployeeHub is an iOS application that displays a list of employees fetched from remote servers. The app includes features such as pull-to-refresh, search functionality, and detailed views of each employee. It is implemented using SwiftUI.
 
 ## Requirements to Compile and Run
 
@@ -17,14 +17,14 @@ The EmployeeHub is an iOS application that displays a list of employees fetched 
 - Allows users to view detailed information about each employee.
 - Supports pull-to-refresh to reload the employee list.
 - Includes a search bar to filter employees by first name, last name, position, and projects.
-- Error handling for network failures.
+- Implements error handling for network failures.
 
 ## Architecture
 
-The app follows the MVVM (Model-View-ViewModel) architecture pattern. This architecture was chosen because it promotes a clear separation of concerns, making the code more modular, testable, and maintainable. 
+The app follows the MVVM (Model-View-ViewModel) architecture pattern. This architecture was chosen for its clear separation of concerns, making the code more modular, testable, and maintainable. 
 
 - **Model:** Represents the employee data and is responsible for decoding the JSON response from the server.
-- **View:** Includes SwiftUI views and UIKit view controllers to display the UI.
+- **View:** Comprises SwiftUI views to display the UI.
 - **ViewModel:** Manages the data and business logic, providing data to the views and handling user interactions.
 
 ## Data Fetching

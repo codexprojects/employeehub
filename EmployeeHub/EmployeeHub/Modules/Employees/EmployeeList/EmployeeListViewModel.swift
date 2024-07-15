@@ -8,17 +8,22 @@
 import Foundation
 import Combine
 
+/// ViewModel for managing the list of employees.
 class EmployeeListViewModel: ObservableObject {
+    // MARK: - Published Properties
     @Published var groupedEmployees: [String: [Employee]] = [:]
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     @Published var showErrorAlert: Bool = false
     @Published var searchText: String = ""
     
+    // MARK: - Private Properties
     private var allEmployees: [Employee] = []
     private var cancellables = Set<AnyCancellable>()
     private let employeeService: EmployeeService
     
+    // MARK: - Initialization
+    /// Initializes the ViewModel with an employee service.
     init(employeeService: EmployeeService) {
         self.employeeService = employeeService
         Task {
@@ -27,6 +32,8 @@ class EmployeeListViewModel: ObservableObject {
         setupSearch()
     }
     
+    // MARK: - Fetching Data
+    /// Fetches employees and updates the UI accordingly.
     @MainActor
     func fetchEmployees() async {
         isLoading = true
@@ -42,6 +49,8 @@ class EmployeeListViewModel: ObservableObject {
         isLoading = false
     }
     
+    // MARK: - Data Processing
+    /// Unifies and merges duplicate employees based on their names.
     private func unifyAndMergeEmployees(_ employees: [Employee]) -> [Employee] {
         var uniqueEmployees: [String: Employee] = [:]
         
@@ -58,6 +67,7 @@ class EmployeeListViewModel: ObservableObject {
         return Array(uniqueEmployees.values)
     }
     
+    /// Groups and sorts employees by their position and last name.
     @MainActor
     private func groupAndSortEmployees(_ employees: [Employee]) {
         let grouped = Dictionary(grouping: employees, by: { $0.position })
@@ -66,6 +76,8 @@ class EmployeeListViewModel: ObservableObject {
         }
     }
     
+    // MARK: - Search Functionality
+    /// Sets up the search functionality with debounce to minimize processing.
     private func setupSearch() {
         $searchText
             .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
@@ -81,6 +93,7 @@ class EmployeeListViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
+    /// Filters employees based on the search text.
     @MainActor
     private func filterEmployees(with searchText: String) async {
         if searchText.isEmpty {
@@ -96,14 +109,18 @@ class EmployeeListViewModel: ObservableObject {
         }
     }
     
+    // MARK: - Actions
+    /// Refreshes the employee list.
     func refresh() async {
         await fetchEmployees()
     }
 }
 
+// MARK: - Employee Extension
+/// Extension to merge projects of duplicate employees.
 extension Employee {
     mutating func mergeProjects(from other: Employee) {
         let combinedProjects = (self.projects ?? []) + (other.projects ?? [])
-        self.projects = Array(Set(combinedProjects))
+        self.projects = Array(Set(combinedProjects)).sorted()
     }
 }

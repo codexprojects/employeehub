@@ -7,7 +7,13 @@
 
 import SwiftUI
 
+// MARK: - EmployeeDetailView
+/// EmployeeDetailView: A SwiftUI view that presents detailed information about an employee.
+/// It includes personal information, contact details, and a list of projects the employee has worked on.
 struct EmployeeDetailView: View {
+    // MARK: - Properties and Initializer
+    /// - Parameters:
+    ///   - employee: The `Employee` instance whose details are to be displayed.
     let employee: Employee
     @Environment(\.presentationMode) var presentationMode
     
@@ -15,6 +21,9 @@ struct EmployeeDetailView: View {
         self.employee = employee
     }
     
+    // MARK: - Body
+    /// The body of `EmployeeDetailView` consists of a `NavigationStack` that contains a `ZStack` for layout.
+    /// The `ZStack` aligns its children leading and uses a `VStack` to vertically arrange the header and detail list views.
     var body: some View {
         NavigationStack {
             ZStack(alignment: .leading) {
@@ -36,6 +45,8 @@ struct EmployeeDetailView: View {
     return EmployeeDetailView(employee: employee)
 }
 
+// MARK: - EmployeeDetailHeaderView
+/// EmployeeDetailHeaderView: A view at the top of `EmployeeDetailView` that displays the title and a dismiss button.
 struct EmployeeDetailHeaderView: View {
     @Environment(\.presentationMode) var presentationMode
     
@@ -61,6 +72,8 @@ struct EmployeeDetailHeaderView: View {
     }
 }
 
+// MARK: - EmployeeDetailListView
+/// EmployeeDetailListView: A scrollable view that displays the employee's personal and contact information, as well as a list of projects.
 struct EmployeeDetailListView: View {
     let employee: Employee
     
@@ -90,6 +103,9 @@ struct EmployeeDetailListView: View {
     }
 }
 
+// MARK: - SectionView
+/// SectionView: A reusable view for displaying a section of information in `EmployeeDetailListView`.
+/// It takes a title and a content array where each item is a tuple of label and data.
 struct SectionView: View {
     var title: String
     var content: [(label: String, data: String)]

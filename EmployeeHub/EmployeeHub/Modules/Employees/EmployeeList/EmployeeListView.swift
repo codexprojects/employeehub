@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+// MARK: - EmployeeListView
+// EmployeeListView: A SwiftUI view that displays a list of employees.
+// It uses a ViewModel to manage the state and data for the list.
+// The view includes a search bar for filtering employees and a detail view presented in a sheet.
 struct EmployeeListView: View {
     @StateObject var viewModel: EmployeeListViewModel
     @State private var selectedEmployee: Employee?
@@ -45,6 +49,9 @@ struct EmployeeListView: View {
     return EmployeeListView(viewModel: employeeViewModel)
 }
 
+// MARK: - EmployeeList
+// EmployeeList: A subview of EmployeeListView that displays the actual list of employees.
+// It groups employees by their position and allows users to refresh the list.
 struct EmployeeList: View {
     @ObservedObject var viewModel: EmployeeListViewModel
     @State private var selectedEmployee: Employee?
@@ -96,6 +103,8 @@ struct EmployeeList: View {
     }
 }
 
+// MARK: - EmployeeRowView
+// EmployeeRowView: A reusable view for displaying a single employee's information in a row.
 struct EmployeeRowView: View {
     let employee: Employee
     
@@ -113,6 +122,8 @@ struct EmployeeRowView: View {
     }
 }
 
+// MARK: - CustomHeaderView
+// CustomHeaderView: A view at the top of EmployeeListView that contains a logo and a search bar.
 struct CustomHeaderView: View {
     @Binding var searchText: String
     
@@ -147,6 +158,8 @@ struct CustomHeaderView: View {
     }
 }
 
+// MARK: - SearchBar
+// SearchBar: A custom search bar view that allows users to filter the list of employees by name, project, or position.
 struct SearchBar: View {
     @Binding var text: String
     
@@ -178,6 +191,9 @@ struct SearchBar: View {
     }
 }
 
+// MARK: - ToastErrorMessageView
+// ToastErrorMessageView: A view that displays an error message with a refresh button.
+// It appears at the bottom of the screen and can be dismissed or used to trigger a refresh of the employee list.
 struct ToastErrorMessageView: View {
     var errorMessage: String
     var onRefresh: () async -> Void

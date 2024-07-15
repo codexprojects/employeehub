@@ -7,10 +7,12 @@
 
 import Foundation
 
+/// Enum representing the endpoints for employee services.
 enum EmployeeServiceEndpoints: Endpoint {
     case tallinnEmployeeList
     case tartuEmployeeList
     
+    /// Base URL for the endpoint.
     var baseURL: String {
         switch self {
             case .tallinnEmployeeList: "tallinn-jobapp.aw.ee"
@@ -18,12 +20,14 @@ enum EmployeeServiceEndpoints: Endpoint {
         }
     }
     
+    /// Path for the endpoint.
     var path: String {
         switch self {
             case .tallinnEmployeeList, .tartuEmployeeList: "/employee_list"
         }
     }
     
+    /// HTTP method for the endpoint.
     var method: HTTPMethod {
         switch self {
             case .tartuEmployeeList, .tallinnEmployeeList: .get

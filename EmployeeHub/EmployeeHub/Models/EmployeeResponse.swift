@@ -7,10 +7,12 @@
 
 import Foundation
 
+/// Represents the response structure for employee data.
 struct EmployeeResponse: Codable {
     let employees: [Employee]
 }
 
+/// Represents an individual employee.
 struct Employee: Codable, Identifiable {
     var id = UUID()
     let fname: String
@@ -23,6 +25,7 @@ struct Employee: Codable, Identifiable {
         case fname, lname, position, contactDetails = "contact_details", projects
     }
     
+    // A static list of employees for demonstration or testing purposes.
     static let employeeList = [
         Employee(
             fname: "Eve",
