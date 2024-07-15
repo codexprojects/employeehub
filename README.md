@@ -40,7 +40,7 @@ Using the `NetworkManager`, the app makes concurrent requests to these endpoints
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/codexprojects/employeedirectory.git
+   git clone https://github.com/codexprojects/employeehub.git
    cd EmployeeHub
 2. Open the project in Xcode:
    ```bash
