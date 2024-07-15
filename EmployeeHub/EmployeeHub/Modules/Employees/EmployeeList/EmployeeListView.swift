@@ -27,7 +27,7 @@ struct EmployeeListView: View {
                         .frame(height: 188)
                         .cornerRadius(12)
                         .ignoresSafeArea(.all)
-                        .padding(.bottom, -60)
+                        .padding(.bottom, -30)
                     
                     EmployeeList(viewModel: viewModel)
                 }
