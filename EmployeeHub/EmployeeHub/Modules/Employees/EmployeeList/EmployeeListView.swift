@@ -19,7 +19,7 @@ struct EmployeeListView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(hex: "#161623")
+                Color.offsetBlack
                     .ignoresSafeArea(.all)
                 
                 VStack {
@@ -79,7 +79,7 @@ struct EmployeeList: View {
                     } header: {
                         Text(position.uppercased())
                     }
-                    .listRowBackground(Color(hex: "#161623"))
+                    .listRowBackground(Color.offsetBlack)
                     .ignoresSafeArea(.all)
                 }
                 .padding(.vertical, -3)
@@ -109,7 +109,7 @@ struct EmployeeRowView: View {
     
     var body: some View {
         ZStack(alignment: .leading) {
-            Color(hex: "#2D2D38")
+            Color.greyBlack
                 .cornerRadius(4)
             
             Text("\(employee.fname) \(employee.lname)")
@@ -128,7 +128,7 @@ struct CustomHeaderView: View {
     
     var body: some View {
         ZStack {
-            Color(hex: "#2D2D38")
+            Color.greyBlack
             
             VStack {
                 HStack {
@@ -166,7 +166,7 @@ struct SearchBar: View {
         TextField("", text: $text, prompt: Text("Search by name, project or position").foregroundColor(.white))
             .padding(8)
             .padding(.horizontal, 25)
-            .background(Color(hex: "#545759"))
+            .background(Color.grey1)
             .cornerRadius(8)
             .foregroundStyle(.white)
             .overlay(
@@ -231,7 +231,7 @@ struct ToastErrorMessageView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .frame(height: 88)
-                    .background(Color(hex: "#161623"))
+                    .background(Color.offsetBlack)
                     .cornerRadius(5)
                     .shadow(radius: 10)
                     .padding(.horizontal)

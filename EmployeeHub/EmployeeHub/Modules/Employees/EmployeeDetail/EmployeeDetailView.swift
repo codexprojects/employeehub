@@ -27,7 +27,7 @@ struct EmployeeDetailView: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .leading) {
-                Color(hex: "#161623").ignoresSafeArea(.all)
+                Color.offsetBlack.ignoresSafeArea(.all)
                 
                 VStack(alignment: .leading) {
                     EmployeeDetailHeaderView(presentationMode: self._presentationMode)

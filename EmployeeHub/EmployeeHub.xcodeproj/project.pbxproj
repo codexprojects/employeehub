@@ -22,7 +22,6 @@
 		41A952F82C415E7F0050E8CD /* EmployeeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952F72C415E7F0050E8CD /* EmployeeListView.swift */; };
 		41A952FB2C4164FD0050E8CD /* EmployeeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A952FA2C4164FD0050E8CD /* EmployeeDetailView.swift */; };
 		41A953022C41A4C30050E8CD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A953012C41A4C30050E8CD /* SplashView.swift */; };
-		41A953052C41B7C10050E8CD /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A953042C41B7C10050E8CD /* Color+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +41,6 @@
 		41A952F72C415E7F0050E8CD /* EmployeeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeListView.swift; sourceTree = "<group>"; };
 		41A952FA2C4164FD0050E8CD /* EmployeeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDetailView.swift; sourceTree = "<group>"; };
 		41A953012C41A4C30050E8CD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
-		41A953042C41B7C10050E8CD /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +77,6 @@
 				41A952E02C4136C90050E8CD /* API */,
 				41A952F22C415D300050E8CD /* Models */,
 				41A952EB2C4138C40050E8CD /* Modules */,
-				41A953032C41B7AF0050E8CD /* Helpers */,
 				41A952D62C4133F50050E8CD /* Assets.xcassets */,
 				41A952D82C4133F50050E8CD /* Preview Content */,
 			);
@@ -149,14 +146,6 @@
 				41A952FA2C4164FD0050E8CD /* EmployeeDetailView.swift */,
 			);
 			path = EmployeeDetail;
-			sourceTree = "<group>";
-		};
-		41A953032C41B7AF0050E8CD /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				41A953042C41B7C10050E8CD /* Color+Extension.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,7 +218,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41A953052C41B7C10050E8CD /* Color+Extension.swift in Sources */,
 				41A952E82C4137870050E8CD /* Requestable.swift in Sources */,
 				41A952F12C415D170050E8CD /* EmployeeService.swift in Sources */,
 				41A952E42C4137530050E8CD /* HTTPMethod.swift in Sources */,
