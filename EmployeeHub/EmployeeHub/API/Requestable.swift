@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 /// Defines the requirements for types that can perform network requests.
-public protocol Requestable {
+public protocol Requestable: Sendable {
     /// Performs a network request and decodes the response into a specified `Codable` type.
     /// - Parameter request: The `RequestModel` containing the details of the request to be made.
     /// - Returns: A `Codable` object of type `T` representing the decoded response.

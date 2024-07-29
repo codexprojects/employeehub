@@ -65,10 +65,9 @@ struct EmployeeList: View {
                         .listRowBackground(Color.clear)
                         .frame(maxWidth: .infinity)
                 }
-                
                 ForEach(viewModel.groupedEmployees.keys.sorted(by: <), id: \.self) { position in
                     Section {
-                        ForEach(viewModel.groupedEmployees[position]?.sorted(by: { $0.lname < $1.lname }) ?? []) { employee in
+                        ForEach(viewModel.groupedEmployees[position] ?? []) { employee in
                             Button(action: {
                                 selectedEmployee = employee
                             }) {

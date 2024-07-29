@@ -9,8 +9,8 @@ import Combine
 import Foundation
 
 /// Service class for fetching employee data.
-class EmployeeService {
-    private var networkRequest: Requestable
+struct EmployeeService: Sendable {
+    private let networkRequest: Requestable
     
     /// Initializes the service with a network request handler.
     init(networkRequest: Requestable) {
