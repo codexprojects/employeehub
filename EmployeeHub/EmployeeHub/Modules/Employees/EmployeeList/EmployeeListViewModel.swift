@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 /// ViewModel for managing the list of employees.
+@MainActor
 final class EmployeeListViewModel: ObservableObject {
     // MARK: - Published Properties
     @Published var groupedEmployees: [String: [Employee]] = [:]
@@ -24,7 +25,6 @@ final class EmployeeListViewModel: ObservableObject {
     
     // MARK: - Initialization
     /// Initializes the ViewModel with an employee service.
-    @MainActor
     init(employeeService: EmployeeService) {
         self.employeeService = employeeService
         Task {
@@ -88,7 +88,6 @@ final class EmployeeListViewModel: ObservableObject {
     
     // MARK: - Search Functionality
     /// Sets up the search functionality with debounce to minimize processing.
-    @MainActor
     private func setupSearch() {
         $searchText
             .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
@@ -122,7 +121,6 @@ final class EmployeeListViewModel: ObservableObject {
     
     // MARK: - Actions
     /// Refreshes the employee list.
-    @MainActor
     func refresh() async {
         await fetchEmployees()
     }
