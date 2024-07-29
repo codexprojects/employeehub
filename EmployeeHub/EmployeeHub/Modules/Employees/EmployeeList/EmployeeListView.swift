@@ -163,7 +163,7 @@ struct SearchBar: View {
     @Binding var text: String
     
     var body: some View {
-        TextField("", text: $text, prompt: Text("Search by name, project or position").foregroundColor(.white))
+        TextField("", text: $text, prompt: Text("searchfield_placeholder").foregroundColor(.white))
             .padding(8)
             .padding(.horizontal, 25)
             .background(Color.grey1)
