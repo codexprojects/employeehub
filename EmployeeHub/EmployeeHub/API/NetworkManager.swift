@@ -8,7 +8,7 @@
 import Foundation
 
 /// A class responsible for managing network requests conforming to `Requestable`.
-public class NetworkManager: Requestable {
+public struct NetworkManager: Requestable {
     /// Performs a network request and decodes the response into a specified `Codable` type.
     /// - Parameter request: The `RequestModel` containing the details of the request to be made.
     /// - Returns: A `Codable` object of type `T` representing the decoded response.

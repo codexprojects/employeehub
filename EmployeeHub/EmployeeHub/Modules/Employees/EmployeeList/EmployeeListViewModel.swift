@@ -9,7 +9,8 @@ import Foundation
 import Combine
 
 /// ViewModel for managing the list of employees.
-class EmployeeListViewModel: ObservableObject {
+@MainActor
+final class EmployeeListViewModel: ObservableObject {
     // MARK: - Published Properties
     @Published var groupedEmployees: [String: [Employee]] = [:]
     @Published var isLoading: Bool = false
@@ -70,9 +71,18 @@ class EmployeeListViewModel: ObservableObject {
     /// Groups and sorts employees by their position and last name.
     @MainActor
     private func groupAndSortEmployees(_ employees: [Employee]) {
+        // Group the employees by their position
         let grouped = Dictionary(grouping: employees, by: { $0.position })
+        
+        // Sort each group first by first name, and if they are the same, then by last name
         groupedEmployees = grouped.mapValues { group in
-            group.sorted { $0.lname < $1.lname }
+            group.sorted {
+                if $0.fname == $1.fname {
+                    return $0.lname < $1.lname  // If first names are the same, sort by last name
+                } else {
+                    return $0.fname < $1.fname  // Otherwise, sort by first name
+                }
+            }
         }
     }
     
